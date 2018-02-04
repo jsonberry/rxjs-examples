@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "http-server ./examples"
+    "start": "http-server ./examples/http"
   },
   "dependencies": {
     "axios": "^0.17.1",

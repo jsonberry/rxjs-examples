@@ -1,3 +1,5 @@
 # RxJS Examples
 Front-end and Node examples with RxJS
-RxJS Version: 6+
+
+ - `yarn` to install dependencies
+ - `yarn start` to start the http server

@@ -1,6 +1,15 @@
+/**
+ *      The thing to focus on in this example is the read$ Subject
+ *      It's being used as an event bus
+ *      The "mark as read" buttons are the event producers
+ * 
+ *      Another thing to note is the use of buffer
+ *      Instead of using a global variable to remember the message,
+ *      Buffer is doing that for us
+ */
+
+import { dqs, dqsa, dce } from './util.js'
 const read$ = new Rx.Subject()
-const clearAll$ = new Rx.Subject()
-import { dqs, dqsa, dce } from './util.js';
 
 const input1 = dqs('#input1')
 const btn1 = dqs('#btn1')
@@ -18,11 +27,10 @@ const input2$ = Rx.Observable.fromEvent(input2, 'input').map(({ data }) => data)
 const btn2Clicks$ = Rx.Observable.fromEvent(btn2, 'click')
 const input2Buffer$ = input2$.buffer(btn2Clicks$)
 
-
 input1Buffer$.subscribe(params => {
         input1.value = ''
 
-        const messageId = (new Date).toISOString()
+        const messageId = new Date().toISOString()
         const container = dce('div')
         container.style.border = '1px solid red'
         container.style.padding = '1rem'
@@ -44,7 +52,7 @@ input1Buffer$.subscribe(params => {
 input2Buffer$.subscribe(params => {
         input2.value = ''
 
-        const messageId = (new Date).toISOString()
+        const messageId = new Date().toISOString()
         const container = dce('div')
         container.style.border = '1px solid red'
         container.style.padding = '1rem'
@@ -63,19 +71,15 @@ input2Buffer$.subscribe(params => {
         read2.appendChild(containerClone)
 })
 
-clearAll$.subscribe(
-    () => {
+Rx.Observable.fromEvent(dqs('#clear'), 'click').subscribe(() => {
         inbox1.innerHTML = ''
         inbox2.innerHTML = ''
         read1.innerHTML = ''
         read2.innerHTML = ''
-    }
-)
+})
 
-read$
-    .map(id => dqsa(`[data-message-id="${id}"]`))
-    .subscribe(nodeList => {
-        nodeList.forEach((params) => {
-            params.style.border = ''
+read$.map(id => dqsa(`[data-message-id="${id}"]`)).subscribe(nodeList => {
+        nodeList.forEach(params => {
+                params.style.border = ''
         })
-    })
+})
