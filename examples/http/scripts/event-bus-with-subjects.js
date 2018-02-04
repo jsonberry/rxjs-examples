@@ -15,8 +15,28 @@ const input1 = dqs('#input1')
 const btn1 = dqs('#btn1')
 const inbox1 = dqs('#inbox1')
 const read1 = dqs('#read1')
+/**
+ *      input1$ is a stream of events from an input
+ *      We map the stream of input events into the keys pressed
+ *      Which transforms the stream into a stream of keys
+ * 
+ *      inputEvent----inputEvent----inputEvent
+ *      ---------------- map ---------------
+ *      k----e----y----p----r----e----s----s
+ */
 const input1$ = Rx.Observable.fromEvent(input1, 'input').map(({ data }) => data)
+
+/**
+ *      Just a simple stream of button clicks, only for "button1"
+ */
 const btn1Clicks$ = Rx.Observable.fromEvent(btn1, 'click')
+
+/**
+ *      buffer helps up capture all the keys pressed until button1 is clicked
+ *      
+ *      Think of it as:
+ *      streamOfValuesToBuffer$.buffer(bufferByThisObservableEmission$)
+ */
 const input1Buffer$ = input1$.buffer(btn1Clicks$)
 
 const input2 = dqs('#input2')
@@ -78,6 +98,12 @@ Rx.Observable.fromEvent(dqs('#clear'), 'click').subscribe(() => {
         read2.innerHTML = ''
 })
 
+
+/**
+ *      Because read$ is a Subject, it can act as an event bus
+ *      We can create event producers and each of them can
+ *      Send a new message to the event bus whenever we choose
+ */
 read$.map(id => dqsa(`[data-message-id="${id}"]`)).subscribe(nodeList => {
         nodeList.forEach(params => {
                 params.style.border = ''
