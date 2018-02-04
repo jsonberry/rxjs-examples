@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "start": "http-server ./examples"
+  },
   "dependencies": {
     "axios": "^0.17.1",
+    "http-server": "^0.11.1",
     "rxjs": "^6.0.0-alpha.2"
   }
 }

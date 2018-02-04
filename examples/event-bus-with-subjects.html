@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.0.0-alpha.2/Rx.js"></script>
+    <script type="module" src="./scripts/event-bus-with-subjects.js"></script>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            <label>New Message</label>
+            <input type="text" id="input1">
+            <button id="btn1">send</button>
+            <p>Inbox:</p>
+            <div id="inbox1"></div>
+            <p>Messages Read?</p>
+            <div id="read1"></div>
+        </div>
+        <div>
+            <label>New Message</label>
+            <input type="text" id="input2">
+            <button id="btn2">send</button>
+            <p>Inbox:</p>
+            <div id="inbox2"></div>
+            <p>Messages Read?</p>
+            <div id="read2"></div>
+        </div>
+    </div>
+    <button onclick="clearAll$.next()">clear all</button>
+</body>
+
+</html>
