@@ -33,13 +33,11 @@ const posts$ = Observable.from(axios.get(endpoint))
          *     In each subsequent firing, we ask for the next page of posts
          */
         .concatMap(page =>
-                Observable.from(
-                        axios.get(endpoint, {
-                                params: {
-                                        page,
-                                },
-                        }),
-                ),
+                axios.get(endpoint, {
+                        params: {
+                                page,
+                        },
+                }),
         )
         .subscribe(
                 // data here is an Array of WordPress Posts, tacking .length shows us how many per page we are getting
