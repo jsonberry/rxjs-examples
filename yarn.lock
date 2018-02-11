@@ -133,9 +133,9 @@ requires-port@1.x.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
-rxjs@^6.0.0-alpha.2:
-  version "6.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.0.0-alpha.2.tgz#6c8dc76801002ee0abedf5ab56587229ee0b3787"
+rxjs@^6.0.0-alpha.3:
+  version "6.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.0.0-alpha.3.tgz#fcce7ffcaa7c6c2cfacec23aa58a3c900c2b8148"
 
 union@~0.4.3:
   version "0.4.6"

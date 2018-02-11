@@ -6,9 +6,8 @@
  */
 const axios = require('axios')
 
-const { Observable } = require('rxjs')
+const { Observable, from, range } = require('rxjs')
 const { switchMap, concatMap } = require('rxjs/operators')
-const { from, range } = require('rxjs/create')
 
 const endpoint = 'http://demo.wp-api.org/wp-json/wp/v2/posts'
 
