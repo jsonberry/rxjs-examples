@@ -1,22 +1,18 @@
 const { Observable } = require('rxjs')
 
-const retryWithBackoff = (attempts, fallback) => stream =>
+const retryWithBackoff = (retries, fallback) => stream =>
         stream
                 .retryWhen(errors => {
                         return errors
-                                .do(ev => console.log(ev))
-                                .zip(Observable.range(1, attempts + 1))
+                                .zip(Observable.range(1, retries + 1))
                                 .mergeMap(([error, i]) => {
-                                        if (i > attempts) {
+                                        if (i > retries) {
                                                 return Observable.throw(error)
                                         }
 
-                                        console.log(
-                                                `Retrying after ${i} seconds`,
-                                        )
-                                        return Observable.timer(i * 1000).take(
-                                                1,
-                                        )
+                                        return Observable
+                                                .timer(Math.pow(2.71828, i))
+                                                .take(1)
                                 })
                 })
                 .catch(_ => fallback)
