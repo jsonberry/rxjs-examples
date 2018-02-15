@@ -1,8 +1,30 @@
 # RxJS Examples
-Front-end and Node examples with RxJS
-
  - `yarn` to install dependencies
  - `yarn start` to start the http server
+
+Front-end and Node examples with RxJS
+
+The Node examples aren't really good "Node" examples yet, they're just in a Node environment. More to come.
+
+# Rx is...
+ - A unified API for async operations - Seth House
+ - Lodash for async/events - Ben Lesh
+
+> _The real answer lies in how you use it_ - Ben Lesh
+>
+> _It’s about manipulating Observables, which are push-based sets_ - Ben Lesh
+>
+> _Reactive Programming allows you to specify the dynamic behavior of a value at declaration_ - André Staltz
+> 
+> _Reactive programming is programming with asynchronous data streams._ - André Staltz
+
+# Notable Influencers
+ - Ben Lesh [@BenLesh](https://twitter.com/BenLesh)
+ - André Staltz [@andrestaltz](https://twitter.com/andrestaltz)
+ - Seth House [@whiteinge](https://twitter.com/whiteinge)
+ - Erik Meijer [@headinthebox](https://twitter.com/headinthebox)
+
+
 
 | Operator | Example |
 | --- |---|
