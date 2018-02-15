@@ -1,27 +1,48 @@
 const { Observable } = require('rxjs')
 
-const retryWithBackoff = (retries, fallback) => stream =>
+const retryWithBackoff = ({
+        fallback = Observable.empty(),
+        retries = 5,
+        strategy = 'linear',
+        timeout = 15000,
+}) => stream =>
         stream
                 .retryWhen(errors => {
                         return errors
+                                .timeout(timeout)
                                 .zip(Observable.range(1, retries + 1))
                                 .mergeMap(([error, i]) => {
                                         if (i > retries) {
                                                 return Observable.throw(error)
                                         }
 
-                                        return Observable
-                                                .timer(Math.pow(2.71828, i))
-                                                .take(1)
+                                        let backoff
+                                        switch (strategy) {
+                                                case 'linear':
+                                                        backoff = i * 1000
+                                                        break
+
+                                                case 'exponential':
+                                                        backoff = Math.pow(
+                                                                2.71828,
+                                                                i,
+                                                        )
+                                                        break
+
+                                                default:
+                                                        backoff = i * 1000
+                                        }
+
+                                        return Observable.timer(backoff)
                                 })
                 })
                 .catch(_ => fallback)
 
 let foo = null
 
-setTimeout(() => {
-        foo = 'foo'
-}, 5000)
+// setTimeout(() => {
+//         foo = 'foo'
+// }, 5000)
 
 Observable.interval(1000)
         .first()
@@ -36,13 +57,16 @@ Observable.interval(1000)
                                         return ev
                                 }
                         })
-                        .let( // need to upgrade this to use pipe instead
-                                retryWithBackoff(
-                                        4,
-                                        Observable.of(
-                                                'Uh oh! Something went wrong',
+                        .let(
+                                // need to upgrade this to use pipe instead
+                                retryWithBackoff({
+                                        fallback: Observable.of(
+                                                'I am a fallback',
                                         ),
-                                ),
+                                        retries: 9,
+                                        strategy: 'exponential',
+                                        timeout: 3000,
+                                }),
                         ),
         )
         .subscribe(ev => console.log(ev))
