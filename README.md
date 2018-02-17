@@ -43,10 +43,9 @@ The Node examples aren't really good "Node" examples yet, they're just in a Node
 | [merge](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#static-method-merge) | [Move Element with Arrows](/examples/http/scripts/move-el-with-arrows.js) |
 | [mergeMap](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-mergeMap) | [Konami Code](/examples/http/scripts/konami-code.js) </br> [Retry with Backoff](/examples/node/retry-with-backoff.js) |
 | [of](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#static-method-of) | [Retry with Backoff](/examples/node/retry-with-backoff.js) |
-| [range](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#static-method-range) | [Subsequent XHR Requests](/examples/node/subsequent-xhr-requests.js) </br> [Retry with Backoff](/examples/node/retry-with-backoff.js)|
+| [range](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#static-method-range) | [Subsequent XHR Requests](/examples/node/subsequent-xhr-requests.js) </br> [Retry with Backoff](/examples/node/retry-with-backoff.js) </br> [Subsequent XHR Requests](/examples/node/subsequent-xhr-requests.js)|
 | [retryWhen](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-retryWhen) | [Retry with Backoff](/examples/node/retry-with-backoff.js) |
 | [startWith](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-startWith) | [Move Element with Arrows](/examples/http/scripts/move-el-with-arrows.js) |
-| [switchMap](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-switchMap) | [Subsequent XHR Requests](/examples/node/subsequent-xhr-requests.js) |
 | [throw](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#static-method-throw) | [Retry with Backoff](/examples/node/retry-with-backoff.js) |
 | [timer](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#static-method-timer) | [Retry with Backoff](/examples/node/retry-with-backoff.js) |
 | [zip](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-zip) | [Retry with Backoff](/examples/node/retry-with-backoff.js) |
