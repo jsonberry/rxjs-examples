@@ -23,7 +23,7 @@ const posts$ = Observable.from(axios.get(endpoint))
          *     We'll start with 1, and end with whatever the total number of pages is
          *     This gives us a stream of 1--n--n--n... (example: 1, 2, 3, 4...)
          */
-        .switchMap((
+        .mergeMap((
                 { headers }, // using ES6 function header destructuring and arrow functions here
         ) => Observable.range(1, Number(headers['x-wp-totalpages'])))
         /**
