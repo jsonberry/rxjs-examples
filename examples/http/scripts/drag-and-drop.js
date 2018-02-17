@@ -1,10 +1,10 @@
-import { dqs } from './util.js'
+import { dqs } from "./util.js"
 
-const circle = dqs('#circle')
+const circle = dqs("#circle")
 
-const mouseDown$ = Rx.Observable.fromEvent(circle, 'mousedown')
-const mouseUp$ = Rx.Observable.fromEvent(circle, 'mouseup')
-const mouseMove$ = Rx.Observable.fromEvent(circle, 'mousemove')
+const mouseDown$ = Rx.Observable.fromEvent(circle, "mousedown")
+const mouseUp$ = Rx.Observable.fromEvent(circle, "mouseup")
+const mouseMove$ = Rx.Observable.fromEvent(circle, "mousemove")
 
 mouseDown$
         .concatMap(ev => {

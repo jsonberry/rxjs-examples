@@ -4,12 +4,12 @@
  *      Then we make subsequent XHR requests (via Axios)
  *      That paginate through every page of posts
  */
-const axios = require('axios')
+const axios = require("axios")
 
-const { Observable, from, range } = require('rxjs')
-const { switchMap, concatMap } = require('rxjs/operators')
+const { Observable, from, range } = require("rxjs")
+const { switchMap, concatMap } = require("rxjs/operators")
 
-const endpoint = 'http://demo.wp-api.org/wp-json/wp/v2/posts'
+const endpoint = "http://demo.wp-api.org/wp-json/wp/v2/posts"
 
 /**
  *      This sets up the initial request and the Observable stream
@@ -25,7 +25,7 @@ const posts$ = Observable.from(axios.get(endpoint))
          */
         .mergeMap((
                 { headers }, // using ES6 function header destructuring and arrow functions here
-        ) => Observable.range(1, Number(headers['x-wp-totalpages'])))
+        ) => Observable.range(1, Number(headers["x-wp-totalpages"])))
         /**
          *     We can now paginate through all posts, getting 10/page
          *     concatMap will fire off a request, waits until it completes, and then fire the next one
@@ -41,5 +41,5 @@ const posts$ = Observable.from(axios.get(endpoint))
         .subscribe(
                 // data here is an Array of WordPress Posts, tacking .length shows us how many per page we are getting
                 ({ data }) => console.log(data.length),
-                err => console.log('Oh no, an error!', err),
+                err => console.log("Oh no, an error!", err),
         )
