@@ -1,4 +1,4 @@
-import { dqs } from "./util.js"
+import { dqs } from "./utils.js"
 const Observable = Rx.Observable
 
 const circle = dqs("#circle")

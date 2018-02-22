@@ -7,7 +7,7 @@
  *      Instead of using a global variable to remember the message,
  *      Buffer is doing that for us
  */
-import { dqs, dqsa, dce } from "./util.js"
+import { dqs, dqsa, dce } from "./utils.js"
 const Observable = Rx.Observable
 const Subject = Rx.Subject
 

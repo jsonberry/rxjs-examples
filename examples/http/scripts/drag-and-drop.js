@@ -1,4 +1,4 @@
-import { dqs } from "./util.js"
+import { dqs } from "./utils.js"
 
 const circle = dqs("#circle")
 
