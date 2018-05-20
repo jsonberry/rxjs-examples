@@ -1,0 +1,2 @@
+# TODO
+- custom pipeable operators
