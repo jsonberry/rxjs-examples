@@ -1,7 +1,8 @@
 import { dqs } from "./utils.js"
-const Observable = Rx.Observable
+const { from, fromEvent } = rxjs
+const { map, bufferCount, mergeMap, filter, sequenceEqual } = rxjs.operators
 
-const konami = Observable.from([
+const konami = from([
         "ArrowUp",
         "ArrowUp",
         "ArrowDown",
@@ -16,9 +17,10 @@ const konami = Observable.from([
 
 const result = dqs("#konami")
 
-Observable.fromEvent(window, "keyup")
-        .map(ev => ev.code)
-        .bufferCount(10, 1)
-        .mergeMap(keys => Rx.Observable.from(keys).sequenceEqual(konami))
-        .filter(bool => bool)
-        .subscribe(ev => (result.textContent = "Konami!"))
+fromEvent(window, "keyup")
+  .pipe(
+    map(ev => ev.code),
+    bufferCount(10, 1),
+    mergeMap(keys => from(keys).pipe(sequenceEqual(konami))),
+    filter(bool => bool),
+  ).subscribe(_ => (result.textContent = "Konami!"))
