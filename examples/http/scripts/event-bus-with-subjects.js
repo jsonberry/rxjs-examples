@@ -8,8 +8,8 @@
  *      Buffer is doing that for us
  */
 import { dqs, dqsa, div, p, button } from './utils.js'
-const {Subject, fromEvent} = rxjs
-const {map, buffer, first, pluck} = rxjs.operators
+const { Subject, fromEvent } = rxjs
+const { map, buffer, first, pluck } = rxjs.operators
 
 const read$ = new Subject()
 
@@ -72,9 +72,9 @@ input1Buffer$.subscribe(params => {
    * Only take the first click, then turn the stream off
    * Send a signal to the Subject with the message ID
    */
-  fromEvent(btn, 'click').pipe(
-    first()
-  ).subscribe(_ => read$.next(messageId))
+  fromEvent(btn, 'click')
+    .pipe(first())
+    .subscribe(_ => read$.next(messageId))
 })
 
 input2Buffer$.subscribe(params => {
@@ -94,9 +94,9 @@ input2Buffer$.subscribe(params => {
   container.appendChild(btn)
   inbox1.appendChild(container)
 
-  fromEvent(btn, 'click').pipe(
-    first()
-  ).subscribe(_ => read$.next(messageId))
+  fromEvent(btn, 'click')
+    .pipe(first())
+    .subscribe(_ => read$.next(messageId))
 })
 
 fromEvent(dqs('#clear'), 'click').subscribe(() => {
@@ -111,10 +111,8 @@ fromEvent(dqs('#clear'), 'click').subscribe(() => {
  *      We can create event producers and each of them can
  *      Send a new message to the event bus whenever we choose
  */
-read$.pipe(
-  map(id => dqsa(`[data-message-id="${id}"]`))
-).subscribe(nodeList => {
-    nodeList.forEach(params => {
-      params.style.border = ''
-    })
+read$.pipe(map(id => dqsa(`[data-message-id="${id}"]`))).subscribe(nodeList => {
+  nodeList.forEach(params => {
+    params.style.border = ''
   })
+})
