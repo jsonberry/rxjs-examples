@@ -1,0 +1,2 @@
+- do an example here where you scan over all the posts and emit just one single blog
+- change the example to be more specific to showing flattening operators, back pressure, and functional nature
